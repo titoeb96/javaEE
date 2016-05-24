@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -9,16 +8,10 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <link rel="icon" href="../../favicon.ico">
-
     <title>Starter Template for Bootstrap</title>
-
-    <!-- Bootstrap core CSS -->
     <link href="template/css/bootstrap.min.css" rel="stylesheet">
-
   </head>
-
   <body>
-
     <nav class="navbar navbar-inverse navbar-fixed-top">
       <div class="container">
         <div class="navbar-header">
@@ -39,18 +32,14 @@
         </div><!--/.nav-collapse -->
       </div>
     </nav>
-
     <div class="container">
-
-      <div class="starter-template">
-        <h1>Bootstrap starter template</h1>
-        <p class="lead">Use this document as a way to quickly start any new project.<br> All you get is this text and a mostly barebones HTML document.</p>
-      </div>
-
-    </div>
+        <br><br><br>
+        <div class="row">
+                Hola Mundo
+        </div>
+    </div><!-- /.container -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
- 
-    <script src="templatet/js/bootstrap.min.js"></script>
-
+    <script src="template/js/bootstrap.min.js"></script>
+   
   </body>
 </html>
