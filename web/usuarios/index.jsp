@@ -1,3 +1,8 @@
+
+<%@page import="java.sql.ResultSet"%>
+<%@page import="java.sql.Statement"%>
+<%@page import="java.sql.DriverManager"%>
+<%@page import="java.sql.Connection"%>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -40,6 +45,47 @@
     <h3 class="panel-title">Listar Usuarios</h3>
   </div>
   <div class="panel-body">
+      <a href="crear.jsp" class="btn btn-primary">NUEVO USUARIO</a>
+      <br>
+      <br>
+      <table class="table-condensed table-hover table-bordered">
+          <thead>
+          <th>ID</th>
+          <th>Nombre</th>
+          <th>1erAPELLIDO</th>
+          <th>2doAPELLIDO</th>
+          <th>Acciones</th>
+          
+            </thead>
+          <tbody>
+              <%   Connection con=null;
+                   String driver="com.mysql.jdbc.Driver";
+                   String user="root";
+                   String pass="";
+                   String url="jdbc:mysql://localhost:3306/javaee";
+                   try{
+                       Class.forName(driver);
+                       con=DriverManager.getConnection(url,user,pass);
+                      Statement stmt=con.createStatement();
+                      stmt.executeQuery("select * from Usuarios where estado='activo'");
+                      ResultSet rs=stmt.getResultSet();
+                      while(rs.next()){
+                      out.println("<tr>");
+                      out.println("<td>"+rs.getString("usuario_id")+"</td>");
+                      out.println("<td>"+rs.getString("nombre")+"</td>");
+              out.println("<td>"+rs.getString("apepat")+"</td>");
+              out.println("<td>"+rs.getString("apemat")+"</td>");
+           
+                      }
+                      
+                   }catch(Exception ex){
+                       out.println("error de conexion"+ex.getMessage());
+                   }
+              %>
+          </tbody>
+          
+          
+      </table>
   
   </div>
 </div>
