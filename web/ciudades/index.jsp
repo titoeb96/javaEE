@@ -1,3 +1,7 @@
+<%@page import="java.sql.Statement"%>
+<%@page import="java.sql.ResultSet"%>
+<%@page import="java.sql.DriverManager"%>
+<%@page import="java.sql.Connection"%>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -36,12 +40,48 @@
         <br><br><br>
         <div class="row">
               <div class="panel panel-primary">
-  <div class="panel-heading">
-    <h3 class="panel-title">Listar Ciudades</h3>
+    <h3 class="panel-title">Listar Usuarios</h3>
   </div>
   <div class="panel-body">
-      <h1> Bienvenido al menú principal</h1>
-     
+      <a href="crear.jsp" class="btn btn-primary">NUEVA CIUDAD</a>
+      <br>
+      <br>
+      <table class="table-condensed table-hover table-bordered">
+          <thead>
+          <th>ID</th>
+          <th>Nombre</th>
+            <th>Acciones</th>
+          
+            </thead>
+          <tbody>
+              <%   Connection con=null;
+                   String driver="com.mysql.jdbc.Driver";
+                   String user="root";
+                   String pass="";
+                   String url="jdbc:mysql://localhost:3306/javaee";
+                   try{
+                       Class.forName(driver);
+                       con=DriverManager.getConnection(url,user,pass);
+                      Statement stmt=con.createStatement();
+                      stmt.executeQuery("select * from Ciudades where estado='activo'");
+                      ResultSet rs=stmt.getResultSet();
+                      while(rs.next()){
+                      out.println("<tr>");
+                      out.println("<td>"+rs.getString("ciudad_id")+"</td>");
+                      out.println("<td>"+rs.getString("nombre")+"</td>");
+            
+           
+                      }
+                      
+                   }catch(Exception ex){
+                       out.println("error de conexion"+ex.getMessage());
+                   }
+              %>
+          </tbody>
+          
+          
+      </table>
+  
   </div>
 </div>
     </div><!-- /.container -->
